@@ -1,0 +1,79 @@
+{% comment %}
+  Renders social icons.
+  Accepts:
+  - className: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'social-media-icons',
+    class: 'my-class'
+  %}
+{% endcomment %}
+
+{{ 'social-media.css' | asset_url | stylesheet_tag }}
+
+<ul class="list-unstyled social-media-list{% if className %} {{ className}}{% endif %}" role="list">
+  {%- if settings.social_facebook_link != blank -%}
+    <li class="list-social__item">
+      <a
+        href="{{ settings.social_facebook_link }}"
+        class="link link--text list-social__link facebook"
+        style="color: {{ settings.social_facebook_color }}"
+      >
+        {%- render 'icon-facebook' -%}
+        <span class="visually-hidden">Facebook</span>
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.social_instagram_link != blank -%}
+    <li class="list-social__item">
+      <a
+        href="{{ settings.social_instagram_link }}"
+        class="link list-social__link instagram"
+        style="color: {{ settings.social_instagram_color }}"
+      >
+        {%- render 'icon-instagram' -%}
+        <span class="visually-hidden">Instagram</span>
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.social_youtube_link != blank -%}
+    <li class="list-social__item">
+      <a
+        href="{{ settings.social_youtube_link }}"
+        class="link list-social__link youtube"
+        style="color: {{ settings.social_youtube_color }}"
+      >
+        {%- render 'icon-youtube' -%}
+        <span class="visually-hidden">YouTube</span>
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.social_tiktok_link != blank -%}
+    <li class="list-social__item">
+      <a
+        href="{{ settings.social_tiktok_link }}"
+        class="link list-social__link tiktok"
+        style="color: {{ settings.social_tiktok_color }}"
+      >
+        {%- render 'icon-tiktok' -%}
+        <span class="visually-hidden">TikTok</span>
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.social_whatsapp_link != blank -%}
+    <li class="list-social__item">
+      <a
+        href="https://api.whatsapp.com/send?text={{ shop.name }}%20{{ shop.url }}"
+        class="link list-social__link whatsapp"
+        style="color: #25D366;"
+      >
+        {%- render 'icon-whatsapp' -%}
+        <span class="visually-hidden">WhatsApp</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>
